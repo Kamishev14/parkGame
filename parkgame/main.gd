@@ -10,8 +10,6 @@ var game_ended = false  # Блокира контроли пред крајот
 @onready var end_panel = $UI/Panel
 @onready var end_label = $UI/Panel/VBoxContainer/EndLabel
 
-#Cheer Character Animation
-@onready var chris = $Chris
 
 func _ready():
 	timer.start(30)
@@ -24,7 +22,7 @@ func _process(_delta):
 		time_label.text = "Time: " + str(int(timer.time_left))  # Ажурира тајмер UI
 
 func _on_coin_collected():
-	if game_ended:  # Ignore if the game is over
+	if game_ended: 
 		return
 	collected_coins += 1
 	coin_label.text =  "Coins: " + str(collected_coins) + "/" + str(total_coins)  # Ажурирање на UI
@@ -60,7 +58,7 @@ func _input(event):
 			get_tree().quit()
 
 func _on_restart_button_pressed():
-	get_tree().reload_current_scene()  # Reload the current scene to restart the game
+	get_tree().reload_current_scene()  # Рестарт на играта
 
 func _on_quit_button_pressed():
-	get_tree().quit()  # Quit the game
+	get_tree().quit()  # Исклучување на играта

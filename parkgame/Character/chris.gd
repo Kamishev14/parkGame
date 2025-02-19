@@ -28,20 +28,16 @@ var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
 
-## Node references
+## Node Рефернци
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $CollisionShape3D
-@onready var anim_player: AnimationPlayer = $Rogue_Hooded/AnimationPlayer  # Make sure this path is correct!
+@onready var anim_player: AnimationPlayer = $Rogue_Hooded/AnimationPlayer
 
 
 func _ready() -> void:
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
-
-# Method to play the cheer animation
-func play_cheer_animation():
-	anim_player.play("Cheer")
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -63,7 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if get_tree().get_first_node_in_group("main").game_ended:
-		return  # If game ended, ignore collection
+		return  # При крај игноре на колекција
 	# Freefly mode (no animations)
 	if can_freefly and freeflying:
 		var move_input := Input.get_vector(input_left, input_right, input_forward, input_back)
@@ -72,22 +68,22 @@ func _physics_process(delta: float) -> void:
 		move_and_collide(motion)
 		return
 
-	# Apply gravity
+	# Гравитација
 	if has_gravity and not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Jumping logic
+	# Скокање
 	if can_jump and Input.is_action_just_pressed(input_jump) and is_on_floor():
 		velocity.y = jump_velocity
-		anim_player.play("Jump_Idle")  # Jump animation
+		anim_player.play("Jump_Idle")  # Анимација на скокање (не ми работи)
 
-	# Sprinting logic
+	# Спринт логика
 	if can_sprint and Input.is_action_pressed(input_sprint):
 		move_speed = sprint_speed
 	else:
 		move_speed = base_speed
 
-	# Movement input
+	# Инпути за движење
 	var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 	var move_dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 

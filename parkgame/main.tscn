@@ -63,6 +63,24 @@ bones/32/rotation = Quaternion(-1.01273e-07, 0.391084, 0.920355, -3.35091e-08)
 bones/33/position = Vector3(8.58988e-09, 0.16565, -2.40963e-09)
 bones/34/rotation = Quaternion(1, -2.33136e-09, 1.99777e-07, -1.34211e-15)
 
+[node name="Knife_Offhand" parent="Chris/Rogue_Hooded/Rig/Skeleton3D" index="0"]
+transform = Transform3D(9.17323e-08, 0.262865, 0.964832, 0.999999, -5.48367e-07, 4.74853e-07, 8.68286e-07, 0.964832, -0.262865, 0.507764, 0.636705, -0.0185365)
+
+[node name="1H_Crossbow" parent="Chris/Rogue_Hooded/Rig/Skeleton3D" index="1"]
+transform = Transform3D(0.988701, -0.149894, -2.68123e-07, -7.79413e-07, -1.2628e-06, -0.999999, 0.149894, 0.988701, -1.69078e-06, -0.489505, 0.745658, 0.0963389)
+
+[node name="2H_Crossbow" parent="Chris/Rogue_Hooded/Rig/Skeleton3D" index="2"]
+transform = Transform3D(0.988701, -0.149894, -2.68123e-07, -7.79413e-07, -1.2628e-06, -0.999999, 0.149894, 0.988701, -1.69078e-06, -0.489505, 0.745658, 0.0963389)
+
+[node name="Knife" parent="Chris/Rogue_Hooded/Rig/Skeleton3D" index="3"]
+transform = Transform3D(2.72302e-07, -0.149894, 0.988701, 0.999999, -1.11461e-06, -7.61174e-07, 1.54153e-06, 0.988701, 0.149894, -0.491058, 0.64103, 0.10658)
+
+[node name="Throwable" parent="Chris/Rogue_Hooded/Rig/Skeleton3D" index="4"]
+transform = Transform3D(2.88042e-07, -0.149894, 0.988701, 0.999999, -1.09988e-06, -7.7486e-07, 1.52901e-06, 0.988701, 0.149894, -0.518076, 0.641029, 0.28479)
+
+[node name="Rogue_Cape" parent="Chris/Rogue_Hooded/Rig/Skeleton3D" index="5"]
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862354, 5.13044e-09, 1, 4.44078e-10, -0.0862354, 1.46374e-15, 0.996275, -4.17227e-09, 1.20227, 1.18859e-15)
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="UI" type="CanvasLayer" parent="."]
