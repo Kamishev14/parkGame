@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl64xhvtx5jnm"]
+
+[ext_resource type="PackedScene" uid="uid://i188t1e1tx0n" path="res://models/Coin/model.gltf" id="1_e60bd"]
+
+[sub_resource type="GDScript" id="GDScript_kc01t"]
+script/source = "extends Area3D
+
+signal collected  # Сигнал за собирање
+
+
+func _ready():
+	connect(\"body_entered\", _on_body_entered)  # Поврзување на колизија
+
+func _on_body_entered(body):
+	if get_tree().get_first_node_in_group(\"main\").game_ended:
+		return  # If game ended, ignore collection
+	if body.is_in_group(\"player\"):  # Проверка дали играчот ја допрел монетата
+		emit_signal(\"collected\")  # Испраќа сигнал дека е собрана
+		queue_free()  # Бришење на монетата од сцената
+"
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7maem"]
+points = PackedVector3Array(7.5, -2, -7, 7.5, -2, -8, 0.5, -2, -7, 7.5, -9, -7, 7.5, -9, -8, 0.5, -2, -8, 0.5, -9, -7, 0.5, -9, -8)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lavpp"]
+points = PackedVector3Array(8, -3, -7, 8, -3, -8, 0, -3, -7, 8, -8, -7, 8, -8, -8, 0, -3, -8, 0, -8, -7, 0, -8, -8)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k2ic0"]
+points = PackedVector3Array(-8, -8, -8, -8, -8, -7, -8, 0, -8, -3, -8, -8, -3, -8, -7, -8, 0, -7, -3, 0, -8, -3, 0, -7)
+
+[node name="Coin" type="Area3D" groups=["coins"]]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 0, 0, 0)
+script = SubResource("GDScript_kc01t")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0499706, 0, 0, 0, 0.0692525, 0, 0, 0, -0.0345672, -0.19455, 0.664519, -0.518508)
+shape = SubResource("ConvexPolygonShape3D_7maem")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0499706, 0, 0, 0, 0.0692525, 0, 0, 0, -0.0345672, -0.19455, 0.664519, -0.518508)
+shape = SubResource("ConvexPolygonShape3D_lavpp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0499706, 0, 0, 0, 0.0692525, 0, 0, 0, -0.0345672, -0.674603, 0.55402, -0.518508)
+shape = SubResource("ConvexPolygonShape3D_k2ic0")
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_e60bd")]
+transform = Transform3D(-0.0499706, 0, 0, 0, 0.0692525, 0, 0, 0, -0.0345672, 0, 0, 0)
+
+[editable path="blockbench_export"]

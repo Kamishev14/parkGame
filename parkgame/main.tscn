@@ -1,0 +1,1135 @@
+[gd_scene load_steps=25 format=3 uid="uid://06lrb2ctup31"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_4u6yx"]
+[ext_resource type="PackedScene" uid="uid://cs45g480mnqmx" path="res://Character/chris.tscn" id="1_c0hf8"]
+[ext_resource type="PackedScene" uid="uid://inu767i7phmi" path="res://scenes/default_forest.tscn" id="3_3k05d"]
+[ext_resource type="PackedScene" uid="uid://s3plllwgyvwb" path="res://scenes/4way.tscn" id="4_wpwyl"]
+[ext_resource type="PackedScene" uid="uid://cqkktcj63uyu1" path="res://scenes/cornerGrass.tscn" id="5_kxlwp"]
+[ext_resource type="PackedScene" uid="uid://0b74epwabvot" path="res://scenes/WaterCorner.tscn" id="6_jjg8c"]
+[ext_resource type="PackedScene" uid="uid://dx6g4xhcob32g" path="res://scenes/WATER.tscn" id="7_m61ag"]
+[ext_resource type="PackedScene" uid="uid://q1n2wrgby1kc" path="res://scenes/50n50.tscn" id="8_gs5qm"]
+[ext_resource type="PackedScene" uid="uid://b1ylvfolurpmu" path="res://scenes/turn.tscn" id="9_cf10t"]
+[ext_resource type="PackedScene" uid="uid://dclkt7jtnncxb" path="res://scenes/3way.tscn" id="10_1m0r8"]
+[ext_resource type="PackedScene" uid="uid://bldcbhnp1la64" path="res://scenes/6way.tscn" id="11_ce5fl"]
+[ext_resource type="PackedScene" uid="uid://ixg5p3jasmih" path="res://scenes/50n50wave.tscn" id="11_x74oc"]
+[ext_resource type="PackedScene" uid="uid://dyd2twyaqqa14" path="res://scenes/trashCan.tscn" id="12_2xulq"]
+[ext_resource type="PackedScene" uid="uid://dk2ojwssmiw41" path="res://scenes/bench.tscn" id="13_k8fmn"]
+[ext_resource type="PackedScene" uid="uid://b1lwwtp7fvqr" path="res://scenes/treeA.tscn" id="14_j4c7e"]
+[ext_resource type="PackedScene" uid="uid://bie5lcmpc56r1" path="res://scenes/treeB.tscn" id="16_8j64a"]
+[ext_resource type="PackedScene" uid="uid://ciqlywj0lsyrm" path="res://scenes/bridge.tscn" id="17_vbd52"]
+[ext_resource type="PackedScene" uid="uid://cw8outy7dvv7c" path="res://scenes/treeC.tscn" id="18_o35ix"]
+[ext_resource type="PackedScene" uid="uid://dp4ce85oe6xmv" path="res://scenes/road.tscn" id="19_7iw37"]
+[ext_resource type="PackedScene" uid="uid://dt7shwbv2ljo8" path="res://scenes/well.tscn" id="20_pal46"]
+[ext_resource type="PackedScene" uid="uid://dl64xhvtx5jnm" path="res://scenes/COIN.tscn" id="22_j1k5m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3n0dq"]
+
+[sub_resource type="Sky" id="Sky_a3tvq"]
+sky_material = SubResource("ProceduralSkyMaterial_3n0dq")
+process_mode = 1
+radiance_size = 6
+
+[sub_resource type="Environment" id="Environment_2xijr"]
+background_mode = 2
+sky = SubResource("Sky_a3tvq")
+sky_custom_fov = 62.5
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+glow_enabled = true
+
+[node name="MainScene" type="Node3D" groups=["main"]]
+script = ExtResource("1_4u6yx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2xijr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.516533, -0.528347, 0.673827, 0, 0.786935, 0.617036, -0.856267, 0.31872, -0.406478, 97.8598, 99.7858, -95.6086)
+shadow_enabled = true
+
+[node name="Chris" parent="." instance=ExtResource("1_c0hf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6135, 1.61679, -10.0599)
+
+[node name="Skeleton3D" parent="Chris/Rogue_Hooded/Rig" index="0"]
+bones/21/rotation = Quaternion(0.993715, 0.0837146, 0.0735038, 0.0109185)
+bones/22/rotation = Quaternion(0.195602, 6.26228e-08, -1.32239e-07, 0.980683)
+bones/23/rotation = Quaternion(-0.517564, -0.209497, 0.0436549, 0.828452)
+bones/24/rotation = Quaternion(-9.74126e-09, 0.920355, -0.391084, 7.8309e-08)
+bones/30/position = Vector3(0.202182, 0.0259903, 0.205181)
+bones/30/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/32/position = Vector3(-2.60494e-08, 0.213436, -5.1715e-09)
+bones/32/rotation = Quaternion(-1.01273e-07, 0.391084, 0.920355, -3.35091e-08)
+bones/33/position = Vector3(8.58988e-09, 0.16565, -2.40963e-09)
+bones/34/rotation = Quaternion(1, -2.33136e-09, 1.99777e-07, -1.34211e-15)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/Panel"]
+layout_mode = 0
+offset_bottom = 120.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndLabel" type="Label" parent="UI/Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimeLabel" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="CoinLabel" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="MapContainer" type="Node3D" parent="."]
+
+[node name="default_forest" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8524, 0.5, -10.4371)
+
+[node name="StaticBody3D" parent="MapContainer" instance=ExtResource("4_wpwyl")]
+transform = Transform3D(0.506064, 0, 0.862496, 0, 1, 0, -0.862496, 0, 0.506064, 12.8227, 0.506749, -10.4179)
+
+[node name="StaticBody3D2" parent="MapContainer" instance=ExtResource("5_kxlwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8367, 0.5, -8.72614)
+
+[node name="StaticBody3D3" parent="MapContainer" instance=ExtResource("6_jjg8c")]
+transform = Transform3D(-0.53391, 0, -0.845541, 0, 1, 0, 0.845541, 0, -0.53391, 10.8695, 0.490041, -7.02222)
+
+[node name="StaticBody3D4" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(0.999804, 0, -0.0198082, 0, 1, 0, 0.0198082, 0, 0.999804, 12.8448, 0.48865, -7.02425)
+
+[node name="StaticBody3D5" parent="MapContainer" instance=ExtResource("6_jjg8c")]
+transform = Transform3D(-0.512178, 0, -0.858879, 0, 1, 0, 0.858879, 0, -0.512178, 11.7987, 0.486567, -5.35149)
+
+[node name="StaticBody3D6" parent="MapContainer" instance=ExtResource("8_gs5qm")]
+transform = Transform3D(0.489535, 0, -0.871984, 0, 1, 0, 0.871984, 0, 0.489535, 13.7973, 0.489911, -5.28199)
+
+[node name="StaticBody3D7" parent="MapContainer" instance=ExtResource("9_cf10t")]
+transform = Transform3D(-0.547279, 0.000440368, 0.83695, 0.00050658, 1, -0.000194906, -0.83695, 0.000317314, -0.547279, 13.8372, 0.5, -8.74368)
+
+[node name="StaticBody3D9" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(0.999729, 0, -0.023298, 0, 1, 0, 0.023298, 0, 0.999729, 14.8411, 0.480745, -6.98194)
+
+[node name="StaticBody3D10" parent="MapContainer" instance=ExtResource("10_1m0r8")]
+transform = Transform3D(-0.999987, -0.00446036, 0.00226615, -0.00445143, 0.999982, 0.00392738, -0.00228363, 0.00391724, -0.99999, 15.7749, 0.5, -8.73944)
+
+[node name="default_forest2" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8071, 0.481187, -3.6252)
+
+[node name="default_forest3" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7866, 0.5, -3.61735)
+
+[node name="StaticBody3D11" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(0.999601, 0, -0.0282531, 0, 1, 0, 0.0282531, 0, 0.999601, 15.8179, 0.5, -5.31702)
+
+[node name="StaticBody3D12" parent="MapContainer" instance=ExtResource("11_x74oc")]
+transform = Transform3D(-0.50638, 0, -0.86231, 0, 1, 0, 0.86231, 0, -0.50638, 16.779, 0.507116, -3.57714)
+
+[node name="StaticBody3D13" parent="MapContainer" instance=ExtResource("5_kxlwp")]
+transform = Transform3D(-0.509342, 0, -0.860564, 0, 1, 0, 0.860564, 0, -0.509342, 16.6594, 0.496086, -7.04503)
+
+[node name="StaticBody3D14" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6082, 0.5, -5.33362)
+
+[node name="StaticBody3D16" parent="MapContainer" instance=ExtResource("5_kxlwp")]
+transform = Transform3D(0.999699, 0, -0.0245543, 0, 1, 0, 0.0245543, 0, 0.999699, 17.7276, 0.5, -8.64724)
+
+[node name="StaticBody3D15" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6854, 0.5, -6.91353)
+
+[node name="StaticBody3D17" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.641, 0.5, -8.58463)
+
+[node name="StaticBody3D18" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6051, 0.507049, -5.18866)
+
+[node name="StaticBody3D19" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6466, 0.5, -6.89463)
+
+[node name="StaticBody3D20" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6382, 0.5, -3.69056)
+
+[node name="default_forest4" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6403, 0.5, -1.97496)
+
+[node name="default_forest5" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7229, 0.499999, -10.3167)
+
+[node name="StaticBody3D8" parent="MapContainer" instance=ExtResource("4_wpwyl")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14.7821, 0.499927, -10.433)
+
+[node name="StaticBody3D21" parent="MapContainer" instance=ExtResource("4_wpwyl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8278, 0.5, -12.1089)
+
+[node name="default_forest6" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7791, 0.5, -12.0496)
+
+[node name="StaticBody3D22" parent="MapContainer" instance=ExtResource("11_ce5fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8248, 0.5, -13.7578)
+
+[node name="StaticBody3D23" parent="MapContainer" instance=ExtResource("9_cf10t")]
+transform = Transform3D(-0.999439, 0, 0.0334867, 0, 1, 0, -0.0334867, 0, -0.999439, 14.8044, 0.484791, -13.706)
+
+[node name="StaticBody3D24" parent="MapContainer" instance=ExtResource("10_1m0r8")]
+transform = Transform3D(0.49256, 0, 0.870278, 0, 1, 0, -0.870278, 0, 0.49256, 13.8087, 0.5, -15.4262)
+
+[node name="StaticBody3D25" parent="MapContainer" instance=ExtResource("10_1m0r8")]
+transform = Transform3D(-0.431062, 0, -0.902322, 0, 1, 0, 0.902322, 0, -0.431062, 11.8883, 0.5, -12.0814)
+
+[node name="StaticBody3D26" parent="MapContainer" instance=ExtResource("10_1m0r8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.96032, 0.5, -11.9553)
+
+[node name="StaticBody3D27" parent="MapContainer" instance=ExtResource("10_1m0r8")]
+transform = Transform3D(0.375577, 0, 0.926791, 0, 1, 0, -0.926791, 0, 0.375577, 10.9286, 0.482236, -13.6016)
+
+[node name="StaticBody3D28" parent="MapContainer" instance=ExtResource("11_x74oc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6451, 0.5, -1.96102)
+
+[node name="default_forest7" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6348, 0.5, -0.305687)
+
+[node name="default_forest8" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5523, 0.5, -0.308047)
+
+[node name="default_forest9" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6316, 0.5, -1.93823)
+
+[node name="StaticBody3D29" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4921, 0.506173, -3.57675)
+
+[node name="StaticBody3D30" parent="MapContainer" instance=ExtResource("11_x74oc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4781, 0.51923, -3.65032)
+
+[node name="default_forest10" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5699, 0.5, -0.260741)
+
+[node name="default_forest11" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5071, 0.5, -1.97561)
+
+[node name="default_forest12" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4192, 0.5, -0.272943)
+
+[node name="default_forest13" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4753, 0.5, -1.9121)
+
+[node name="default_forest14" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.457, 0.5, -3.63531)
+
+[node name="trashCan" parent="MapContainer" instance=ExtResource("12_2xulq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7224, 1.5, -15.2987)
+
+[node name="hex4way" parent="MapContainer" instance=ExtResource("4_wpwyl")]
+transform = Transform3D(0.513025, -0.0124632, -0.858283, 0.00877087, 0.999918, -0.00927725, 0.858329, -0.00276845, 0.513092, 11.8176, 0.489777, -15.3803)
+
+[node name="bench" parent="MapContainer" instance=ExtResource("13_k8fmn")]
+transform = Transform3D(0.219063, 0, -0.975711, 0, 1, 0, 0.975711, 0, 0.219063, 6.3205, 1.79961, -14.5515)
+
+[node name="default_forest15" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94529, 0.5, -13.6073)
+
+[node name="default_forest16" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(0.994392, 0, 0.105761, 0, 1, 0, -0.105761, 0, 0.994392, 9.86155, 0.48746, -15.2293)
+
+[node name="default_forest17" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.92433, 0.5, -15.1998)
+
+[node name="default_forest18" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.89999, 0.528328, -16.9199)
+
+[node name="default_forest19" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94447, 0.5, -16.901)
+
+[node name="default_forest20" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00253, 0.5, -15.2507)
+
+[node name="default_forest21" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90403, 0.5, -18.6015)
+
+[node name="default_forest22" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94013, 0.5, -13.4948)
+
+[node name="default_forest23" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99559, 0.5, -16.9494)
+
+[node name="default_forest24" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04074, 0.5, -15.2514)
+
+[node name="default_forest25" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.02801, 0.5, -13.5806)
+
+[node name="default_forest26" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.00476, 0.5, -11.8981)
+
+[node name="default_forest27" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.87971, 0.5, -10.3556)
+
+[node name="default_forest28" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0385, 0.5, -11.8544)
+
+[node name="default_forest29" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9542, 0.5, -10.2779)
+
+[node name="default_forest30" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.97569, 0.5, -8.77082)
+
+[node name="default_forest31" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01089, 0.5, -8.70094)
+
+[node name="treeA" parent="MapContainer" instance=ExtResource("14_j4c7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31736, 1.52833, -17.3341)
+
+[node name="water" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6244, 0.5, -8.64935)
+
+[node name="water2" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6761, 0.5, -10.1902)
+
+[node name="water3" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6287, 0.499999, -10.4008)
+
+[node name="water4" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5673, 0.5, -8.64507)
+
+[node name="water5" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(0.999877, 0.015655, 0, -0.015655, 0.999877, 0, 0, 0, 1, 22.4766, 0.471956, -6.96784)
+
+[node name="water6" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5429, 0.5, -5.19992)
+
+[node name="water7" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5969, 0.463592, -5.33313)
+
+[node name="water8" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.487, 0.5, -6.91715)
+
+[node name="water9" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(0.994778, 0, 0.102063, 0, 1, 0, -0.102063, 0, 0.994778, 25.354, 0.524553, -8.48895)
+
+[node name="water10" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3087, 0.519913, -10.151)
+
+[node name="water11" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4261, 0.5, -5.18819)
+
+[node name="water12" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3519, 0.5, -6.95741)
+
+[node name="50n50wave" parent="MapContainer" instance=ExtResource("11_x74oc")]
+transform = Transform3D(-0.497035, 0, 0.867731, 0, 1, 0, -0.867731, 0, -0.497035, 18.7269, 0.5, -10.2229)
+
+[node name="50n50wave2" parent="MapContainer" instance=ExtResource("11_x74oc")]
+transform = Transform3D(-0.999923, 0, -0.0123917, 0, 1, 0, 0.0123917, 0, -0.999923, 19.7198, 0.499999, -11.8966)
+
+[node name="50n50wave3" parent="MapContainer" instance=ExtResource("11_x74oc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5984, 0.5, -11.8908)
+
+[node name="water13" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5427, 0.5, -13.3984)
+
+[node name="default_forest32" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5084, 0.5, -13.4976)
+
+[node name="default_forest33" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6179, 0.5, -15.0378)
+
+[node name="default_forest34" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6211, 0.5, -15.1667)
+
+[node name="default_forest35" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6973, 0.5, -13.4891)
+
+[node name="default_forest36" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7757, 0.5, -11.9286)
+
+[node name="default_forest37" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8222, 0.5, -13.6454)
+
+[node name="default_forest38" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7926, 0.5, -15.2025)
+
+[node name="default_forest39" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8209, 0.5, -15.3954)
+
+[node name="default_forest40" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8927, 0.5, -16.8352)
+
+[node name="default_forest41" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.72718, 0.5, -18.4817)
+
+[node name="default_forest42" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8336, 0.466498, -16.8712)
+
+[node name="default_forest43" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7998, 0.5, -16.8947)
+
+[node name="default_forest44" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6783, 0.5, -18.3394)
+
+[node name="default_forest45" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7063, 0.5, -18.4489)
+
+[node name="default_forest46" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7537, 0.5, -16.8735)
+
+[node name="default_forest47" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7011, 0.5, -18.52)
+
+[node name="default_forest48" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7148, 0.5, -16.7895)
+
+[node name="default_forest49" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6823, 0.5, -18.483)
+
+[node name="default_forest50" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6162, 0.5, -16.8593)
+
+[node name="default_forest51" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6721, 0.5, -18.505)
+
+[node name="default_forest52" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7158, 0.467037, -20.1426)
+
+[node name="default_forest53" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7431, 0.452629, -20.1591)
+
+[node name="default_forest54" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7185, 0.451532, -20.1674)
+
+[node name="default_forest55" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7368, 0.5, -20.0301)
+
+[node name="treeB" parent="MapContainer" instance=ExtResource("16_8j64a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -17)
+
+[node name="bench2" parent="MapContainer" instance=ExtResource("13_k8fmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8464, 1.86228, -15.2021)
+
+[node name="bridge" parent="MapContainer" instance=ExtResource("17_vbd52")]
+transform = Transform3D(4.46293, 0, -3.38694, 0, 3.1103, 0, 5.41628, 0, 2.79079, 20.1752, 1.77947, -5.99934)
+
+[node name="default_forest56" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9441, 0.553234, -7.08175)
+
+[node name="default_forest57" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.82333, 0.5, -5.44834)
+
+[node name="default_forest58" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8343, 0.5, -3.6932)
+
+[node name="default_forest59" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8363, 0.5, -1.9424)
+
+[node name="default_forest60" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7698, 0.5, -1.90054)
+
+[node name="default_forest61" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.707, 0.5, -1.91266)
+
+[node name="default_forest62" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7001, 0.5, -0.265249)
+
+[node name="default_forest63" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7241, 0.5, -0.259859)
+
+[node name="default_forest64" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6958, 0.5, -0.282951)
+
+[node name="default_forest65" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4639, 0.5, 1.35922)
+
+[node name="default_forest66" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4768, 0.5, 1.44054)
+
+[node name="default_forest67" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4729, 0.5, 3.08082)
+
+[node name="default_forest68" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4198, 0.5, 1.3797)
+
+[node name="default_forest70" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4345, 0.5, 3.07396)
+
+[node name="default_forest71" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2107, 0.5, 2.97634)
+
+[node name="default_forest72" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3421, 0.5, 1.44319)
+
+[node name="default_forest73" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5597, 0.5, 1.39011)
+
+[node name="cornerGrass" parent="MapContainer" instance=ExtResource("5_kxlwp")]
+transform = Transform3D(0.530422, 0, 0.847733, 0, 1, 0, -0.847733, 0, 0.530422, 26.4053, 0.5, -3.63591)
+
+[node name="treeC" parent="MapContainer" instance=ExtResource("18_o35ix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6924, 1.5, -0.311897)
+
+[node name="water14" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3714, 0.499999, -5.26033)
+
+[node name="water15" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3221, 0.5, -6.96194)
+
+[node name="water16" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.332, 0.516195, -8.68204)
+
+[node name="water17" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 25.8016, 0.5, -9.74296)
+
+[node name="water18" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(0.998154, -0.0050774, 0.0605156, 0.00572555, 0.999928, -0.0105417, -0.0604578, 0.0108687, 0.998112, 25.233, 0.545563, -11.8594)
+
+[node name="water19" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3388, 0.5, -11.7004)
+
+[node name="water20" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2907, 0.5, -3.56143)
+
+[node name="water21" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.374, 0.502854, -5.26289)
+
+[node name="cornerGrass2" parent="MapContainer" instance=ExtResource("5_kxlwp")]
+transform = Transform3D(0.528246, 0, 0.849092, 0, 1, 0, -0.849092, 0, 0.528246, 27.3945, 0.5, -1.90536)
+
+[node name="road" parent="MapContainer" instance=ExtResource("19_7iw37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3715, 0.499998, -0.119658)
+
+[node name="road2" parent="MapContainer" instance=ExtResource("19_7iw37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4411, 0.499999, -0.24565)
+
+[node name="road3" parent="MapContainer" instance=ExtResource("19_7iw37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2498, 0.5, -0.114241)
+
+[node name="road4" parent="MapContainer" instance=ExtResource("19_7iw37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0739, 0.499999, -0.136452)
+
+[node name="turn" parent="MapContainer" instance=ExtResource("9_cf10t")]
+transform = Transform3D(0.464981, 0, -0.885321, 0, 1, 0, 0.885321, 0, 0.464981, 34.0216, 0.5, -0.104589)
+
+[node name="default_forest69" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0074, 0.5, 1.58989)
+
+[node name="default_forest74" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0553, 0.5, 1.64015)
+
+[node name="default_forest75" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2125, 0.5, 1.64228)
+
+[node name="default_forest76" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3198, 0.5, 1.65956)
+
+[node name="default_forest77" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2009, 0.5, 3.24672)
+
+[node name="default_forest78" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1566, 0.5, 3.19966)
+
+[node name="default_forest79" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1387, 0.5, 3.34018)
+
+[node name="default_forest80" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9997, 0.5, 3.32723)
+
+[node name="default_forest81" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.949, 0.5, 3.27853)
+
+[node name="default_forest82" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0401, 0.5, 5.04749)
+
+[node name="default_forest83" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.036, 0.5, 5.04025)
+
+[node name="default_forest84" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8662, 0.5, 4.99655)
+
+[node name="default_forest85" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0226, 0.5, 4.95638)
+
+[node name="default_forest86" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.164, 0.5, 4.88748)
+
+[node name="default_forest87" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0637, 0.5, 6.60903)
+
+[node name="default_forest88" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0227, 0.5, 6.6622)
+
+[node name="default_forest89" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9992, 0.5, 6.74442)
+
+[node name="default_forest90" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1028, 0.5, 8.28421)
+
+[node name="default_forest91" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.273, 0.5, 4.73457)
+
+[node name="default_forest92" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0018, 0.5, 8.36325)
+
+[node name="default_forest93" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0512, 0.5, 10.0227)
+
+[node name="default_forest94" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.843, 0.5, 10.0049)
+
+[node name="default_forest95" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8858, 0.5, 8.39767)
+
+[node name="default_forest96" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.9884, 0.5, 6.74276)
+
+[node name="default_forest97" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8706, 0.5, 8.46125)
+
+[node name="default_forest98" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8413, 0.5, 6.72332)
+
+[node name="default_forest99" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8302, 0.5, 10.14)
+
+[node name="bench3" parent="MapContainer" instance=ExtResource("13_k8fmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.8767, 1.83993, 3.60593)
+
+[node name="bench4" parent="MapContainer" instance=ExtResource("13_k8fmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0022, 1.9202, 6.78509)
+
+[node name="trashCan2" parent="MapContainer" instance=ExtResource("12_2xulq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9081, 1.5, 1.16214)
+
+[node name="default_forest100" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2033, 0.5, 6.51185)
+
+[node name="default_forest101" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4844, 0.5, 4.805)
+
+[node name="default_forest102" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2744, 0.5, 4.68791)
+
+[node name="default_forest103" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1587, 0.5, 8.23349)
+
+[node name="default_forest104" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.348, 0.5, 6.3823)
+
+[node name="default_forest105" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6314, 0.512241, 1.50351)
+
+[node name="default_forest106" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4373, 0.5, 3.14613)
+
+[node name="default_forest107" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4616, 0.499999, 3.00039)
+
+[node name="default_forest108" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6396, 0.5, 1.4353)
+
+[node name="default_forest109" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6448, 0.5, 1.3404)
+
+[node name="default_forest110" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6984, 0.5, 3.09626)
+
+[node name="default_forest111" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6035, 0.5, 3.17057)
+
+[node name="default_forest112" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.9202, 0.5, 5.04014)
+
+[node name="default_forest113" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9797, 0.5, 3.32712)
+
+[node name="default_forest114" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.9057, 0.5, 1.5864)
+
+[node name="default_forest115" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8972, 0.499999, 3.50105)
+
+[node name="default_forest116" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.9483, 0.5, 1.77493)
+
+[node name="treeC2" parent="MapContainer" instance=ExtResource("18_o35ix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5064, 1.4737, 2.77073)
+
+[node name="water22" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.327, 0.5, -1.8842)
+
+[node name="default_forest117" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1678, 0.5, -1.83689)
+
+[node name="default_forest118" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0763, 0.5, -1.83083)
+
+[node name="default_forest119" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9337, 0.5, -0.00248456)
+
+[node name="default_forest120" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.9857, 0.5, -0.0926047)
+
+[node name="default_forest121" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0764, 0.5, -1.74898)
+
+[node name="default_forest122" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0076, 0.5, -1.77883)
+
+[node name="default_forest123" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8905, 0.5, -0.0421467)
+
+[node name="default_forest124" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.913, 0.491316, -1.78387)
+
+[node name="treeA2" parent="MapContainer" instance=ExtResource("14_j4c7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3675, 1.5, 1.65918)
+
+[node name="water23" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2313, 0.498771, -3.58547)
+
+[node name="water24" parent="MapContainer" instance=ExtResource("7_m61ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3042, 0.558229, -10.3971)
+
+[node name="default_forest125" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0947, 0.558229, -3.56859)
+
+[node name="default_forest126" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1012, 0.558228, -5.3199)
+
+[node name="default_forest127" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2239, 0.558227, -6.82193)
+
+[node name="default_forest128" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2531, 0.558229, -8.47241)
+
+[node name="default_forest129" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.224, 0.558228, -10.1766)
+
+[node name="default_forest130" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2245, 0.558229, -11.9263)
+
+[node name="default_forest131" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2381, 0.558229, -13.3305)
+
+[node name="default_forest132" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2974, 0.558229, -13.4762)
+
+[node name="default_forest133" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3184, 0.558228, -15.0063)
+
+[node name="default_forest134" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5041, 0.558229, -14.9696)
+
+[node name="default_forest135" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3568, 0.558229, -16.6908)
+
+[node name="default_forest136" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5755, 0.558229, -16.727)
+
+[node name="default_forest137" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6115, 0.558229, -18.515)
+
+[node name="default_forest138" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5688, 0.558229, -18.435)
+
+[node name="default_forest139" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5697, 0.558229, -20.1337)
+
+[node name="default_forest140" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7007, 0.558229, -20.249)
+
+[node name="default_forest141" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6684, 0.750674, -21.7451)
+
+[node name="default_forest142" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7719, 0.763887, -21.9034)
+
+[node name="default_forest143" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7544, 0.743919, -21.8803)
+
+[node name="default_forest144" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8312, 0.770971, -23.5255)
+
+[node name="default_forest145" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8141, 0.776498, -23.5555)
+
+[node name="default_forest146" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7889, 0.760002, -23.6326)
+
+[node name="default_forest147" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8147, 0.7334, -21.893)
+
+[node name="default_forest148" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7646, 0.741555, -23.5764)
+
+[node name="default_forest149" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6353, 0.734535, -21.7565)
+
+[node name="default_forest150" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.69, 0.770546, -23.4492)
+
+[node name="default_forest151" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7742, 0.796827, -25.1694)
+
+[node name="default_forest152" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7736, 0.699511, -21.7802)
+
+[node name="default_forest153" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8112, 1.11509, -23.5555)
+
+[node name="default_forest154" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7888, 0.705892, -21.8228)
+
+[node name="default_forest155" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7735, 0.751887, -23.608)
+
+[node name="default_forest156" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.77198, 0.724146, -21.8214)
+
+[node name="default_forest157" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7525, 0.485888, -20.129)
+
+[node name="default_forest158" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.80177, 0.501559, -20.1253)
+
+[node name="default_forest159" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8572, 1.11509, -25.3101)
+
+[node name="default_forest160" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7705, 1.11509, -25.3099)
+
+[node name="default_forest161" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7866, 1.11509, -25.3113)
+
+[node name="default_forest162" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8465, 1.11509, -25.1942)
+visible = false
+
+[node name="bench5" parent="MapContainer" instance=ExtResource("13_k8fmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8464, 1.86228, -18.1469)
+
+[node name="default_forest163" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8135, 1.17494, -25.2236)
+
+[node name="default_forest164" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7896, 1.12973, -26.8045)
+
+[node name="default_forest165" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5239, 0.558229, -20.0537)
+
+[node name="default_forest166" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4613, 0.558228, -18.3693)
+
+[node name="default_forest167" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2978, 0.558228, -16.7254)
+
+[node name="default_forest168" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2107, 0.558229, -15.1243)
+
+[node name="default_forest169" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1522, 0.558229, -13.5074)
+
+[node name="default_forest170" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1849, 0.558229, -11.8627)
+
+[node name="default_forest171" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1868, 0.558229, -10.2316)
+
+[node name="default_forest172" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2227, 0.558229, -8.48484)
+
+[node name="default_forest173" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1168, 0.558229, -3.50348)
+
+[node name="default_forest174" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.0659, 0.558229, -3.5528)
+
+[node name="default_forest175" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0913, 0.558228, -5.18554)
+
+[node name="default_forest176" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1921, 0.558228, -6.83027)
+
+[node name="default_forest177" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.0338, 0.558229, -3.55667)
+
+[node name="default_forest178" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0033, 0.558229, -5.24217)
+
+[node name="default_forest179" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.9897, 0.508193, -5.15173)
+
+[node name="default_forest180" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.0103, 0.558229, -6.88501)
+
+[node name="default_forest181" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1359, 0.558229, -6.79969)
+
+[node name="default_forest182" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0969, 0.558228, -8.43819)
+
+[node name="default_forest183" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0728, 0.558228, -8.47462)
+
+[node name="treeA3" parent="MapContainer" instance=ExtResource("14_j4c7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5288, 1.55823, -4.77824)
+
+[node name="treeB2" parent="MapContainer" instance=ExtResource("16_8j64a")]
+transform = Transform3D(0.328141, 0, 0.944629, 0, 1, 0, -0.944629, 0, 0.328141, 32.8137, 1.55823, -6.85898)
+
+[node name="treeC3" parent="MapContainer" instance=ExtResource("18_o35ix")]
+transform = Transform3D(-0.266061, 0, -0.963956, 0, 1, 0, 0.963956, 0, -0.266061, 35.1569, 1.55823, -8.43919)
+
+[node name="default_forest184" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.9842, 0.558229, -8.56433)
+
+[node name="default_forest185" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8725, 0.558228, -6.85611)
+
+[node name="default_forest186" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.962, 0.558229, -10.17)
+
+[node name="default_forest187" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0796, 0.551023, -10.1829)
+
+[node name="default_forest188" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0762, 0.558229, -10.2136)
+
+[node name="default_forest189" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0245, 0.558229, -11.8934)
+
+[node name="default_forest190" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.1379, 0.558229, -11.8741)
+
+[node name="default_forest191" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0648, 0.558228, -13.6063)
+
+[node name="default_forest192" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0962, 0.545654, -11.8679)
+
+[node name="default_forest193" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0974, 0.558229, -13.571)
+
+[node name="default_forest194" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8275, 1.20724, -26.9865)
+
+[node name="default_forest195" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7593, 1.44894, -27.04)
+
+[node name="default_forest196" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8145, 1.4634, -27.069)
+
+[node name="default_forest197" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7984, 1.43956, -27.035)
+
+[node name="default_forest198" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.843, 1.42971, -25.281)
+
+[node name="default_forest199" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8415, 1.69167, -28.7373)
+
+[node name="default_forest200" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8025, 1.68119, -28.8053)
+
+[node name="default_forest201" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8061, 1.66331, -28.7777)
+
+[node name="default_forest202" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.801, 1.66887, -27.1178)
+
+[node name="default_forest203" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8417, 2.08571, -30.5013)
+
+[node name="default_forest204" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8191, 2.26548, -30.5197)
+
+[node name="default_forest205" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7884, 2.47875, -30.4789)
+
+[node name="default_forest206" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75783, 1.67834, -28.8398)
+
+[node name="default_forest207" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78297, 1.22932, -25.443)
+
+[node name="default_forest208" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.76825, 1.65993, -27.167)
+
+[node name="default_forest209" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9115, 0.558229, -18.6163)
+
+[node name="default_forest210" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01344, 0.567252, -16.9369)
+
+[node name="default_forest211" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9491, 0.558229, -18.6449)
+
+[node name="default_forest212" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.84063, 0.535168, -20.2326)
+
+[node name="default_forest213" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89981, 0.558229, -20.3024)
+
+[node name="default_forest214" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8444, 0.55823, -21.9412)
+
+[node name="default_forest215" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88198, 0.558229, -21.9067)
+
+[node name="default_forest216" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86166, 0.558229, -23.6873)
+
+[node name="default_forest217" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87484, 0.558229, -23.5658)
+
+[node name="default_forest218" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86695, 0.558229, -25.2521)
+
+[node name="treeB3" parent="MapContainer" instance=ExtResource("16_8j64a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0574, 2.41817, -25.5871)
+
+[node name="bench6" parent="MapContainer" instance=ExtResource("13_k8fmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1144, 1.95166, -19.7963)
+
+[node name="well" parent="MapContainer" instance=ExtResource("20_pal46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1371, 1.5735, -15.9932)
+
+[node name="default_forest219" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0684, 0.558229, -13.4619)
+
+[node name="default_forest220" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0426, 0.558229, -15.2926)
+
+[node name="default_forest221" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0279, 0.558229, -15.2092)
+
+[node name="default_forest222" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.0902, 0.558229, -15.1357)
+
+[node name="default_forest223" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0809, 0.558229, -16.7891)
+
+[node name="default_forest224" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1076, 0.558229, -16.6678)
+
+[node name="default_forest225" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2489, 0.558229, -18.322)
+
+[node name="default_forest226" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1793, 0.558228, -18.3032)
+
+[node name="default_forest227" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9918, 0.55823, -16.7688)
+
+[node name="default_forest228" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0001, 0.558229, -18.3588)
+
+[node name="default_forest229" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2422, 0.558229, -19.9913)
+
+[node name="default_forest230" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0639, 0.56259, -20.0324)
+
+[node name="default_forest231" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4356, 0.558229, -20.0379)
+
+[node name="default_forest232" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3192, 0.55823, -21.7375)
+
+[node name="default_forest233" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4826, 0.558229, -21.6976)
+
+[node name="default_forest234" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.27, 0.558229, -21.7001)
+
+[node name="default_forest235" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4875, 0.55823, -23.436)
+
+[node name="default_forest236" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5708, 0.501683, -25.204)
+
+[node name="treeC4" parent="MapContainer" instance=ExtResource("18_o35ix")]
+transform = Transform3D(0.817718, 0, -0.575619, 0, 1, 0, 0.575619, 0, 0.817718, 30.6834, 1.55823, -18.212)
+
+[node name="bench7" parent="MapContainer" instance=ExtResource("13_k8fmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0572, 2.05886, -11.7548)
+
+[node name="default_forest237" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.9376, 0.55823, -5.33217)
+
+[node name="default_forest238" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.9305, 0.496523, 1.70955)
+
+[node name="default_forest239" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9319, 0.558229, -3.59103)
+
+[node name="default_forest240" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.9407, 0.558229, -1.81838)
+
+[node name="default_forest241" parent="MapContainer" instance=ExtResource("3_3k05d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.8132, 0.55823, -0.145598)
+
+[node name="CoinsContainer" type="Node3D" parent="."]
+
+[node name="Coin2" parent="CoinsContainer" instance=ExtResource("22_j1k5m")]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 9.36152, 1.64447, -18.432)
+
+[node name="Coin" parent="CoinsContainer" instance=ExtResource("22_j1k5m")]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 11.1769, 3.57343, -30.2916)
+
+[node name="Coin3" parent="CoinsContainer" instance=ExtResource("22_j1k5m")]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 19.036, 2.20724, -26.7023)
+
+[node name="Coin4" parent="CoinsContainer" instance=ExtResource("22_j1k5m")]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 27.3147, 1.70849, -16.0977)
+
+[node name="Coin5" parent="CoinsContainer" instance=ExtResource("22_j1k5m")]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 33.9406, 1.71711, -6.7209)
+
+[node name="Coin6" parent="CoinsContainer" instance=ExtResource("22_j1k5m")]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 40.6982, 1.55938, 3.40618)
+
+[node name="Coin7" parent="CoinsContainer" instance=ExtResource("22_j1k5m")]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 34.2665, 2.45126, 6.88959)
+
+[node name="Coin8" parent="CoinsContainer" instance=ExtResource("22_j1k5m")]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 20.665, 2.49566, -5.68277)
+
+[node name="Coin9" parent="CoinsContainer" instance=ExtResource("22_j1k5m")]
+transform = Transform3D(0.767891, 0, 0, 0, 0.616559, 0, 0, 0, 0.861087, 14.9354, 1.74786, 3.27125)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Chris"]
+[editable path="Chris/Rogue_Hooded"]

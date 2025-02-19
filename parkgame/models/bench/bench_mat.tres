@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dw2lxjpu30p3d"]
+
+[ext_resource type="Texture2D" uid="uid://cr4rg82c21hsf" path="res://models/bench/lambert3SG_baseColor.jpeg" id="1_rrf3n"]
+
+[resource]
+albedo_texture = ExtResource("1_rrf3n")
